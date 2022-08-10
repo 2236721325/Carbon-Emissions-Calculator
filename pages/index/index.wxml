@@ -1,0 +1,65 @@
+<view class="hdBox">
+  <view class="page__hd">
+    <image class="icon" src="../../images/my_icon.jpg"></image>
+    <view>
+      <van-icon name="like-o" />
+      <text>低碳小卫士</text>
+      <view style="font-size: small;">🌏碳寻中国——为地球降温计划！</view>
+    </view>
+  </view>
+</view>
+<view class="bodyBox">
+  <view style="margin: 10px;">
+    <van-cell-group>
+      <van-cell title="选择要计算的的项目：" is-link bind:click="showPicker" />
+      <van-field model:value="{{ input }}" label="{{currentDealProject.name}}({{currentDealProject.unit}})" placeholder="单位:({{currentDealProject.unit}})" />
+      <view class="buttons">
+    <van-button type="info" round bind:click="calculate">计算</van-button>
+    <van-button type="danger" round bind:click="clear">全部清空</van-button>
+    </view>
+    </van-cell-group>
+  </view>
+</view>
+<view class="bodyBox">
+  <view class="table">
+     <view class="tr">
+       <view class="th">名称</view>
+       <view class="th">数量</view>
+       <view class="th">排碳量</view>
+       <view class="th">删除</view>
+    </view>
+     <block wx:for="{{records}}" wx:key="index">
+       <view class="tr">
+         <view class="td">{{item.name}}({{item.unit}})</view>
+         <view class="td">
+          <van-field readonly value="{{item.input}}" />
+         </view>
+          <view class="td">
+          <van-field readonly value="{{item.result}}" />
+         </view>
+          <view class="td">
+          <van-button size="mini" bindtap="singelDelete" data-value="{{item.name}}" round type="danger" icon="cross"></van-button>
+        </view>
+      </view>
+       </block>
+  </view>
+</view>
+
+<view class="ftBox">
+  <view class="page__ft">
+    <view>
+      合计碳排放：{{allResult}}千克CO2
+    </view>
+  </view>
+</view>
+
+
+
+
+<van-popup show="{{ show }}" bind:close="closePicker" position="bottom" round>
+  <van-picker title="请选择要添加的项目" show-toolbar columns="{{ columns }}" bind:change="onChange" bind:confirm="onConfirm" bind:cancel="onCancel" />
+</van-popup>
+
+
+
+
