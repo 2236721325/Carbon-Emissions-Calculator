@@ -1,3 +1,4 @@
+<image class="background" src="../../images/backg.jpg" mode="aspectFill"></image>
 <view class="hdBox">
   <view class="page__hd">
     <image class="icon" src="../../images/my_icon.jpg"></image>
@@ -14,7 +15,7 @@
       <van-cell title="选择要计算的的项目：" is-link bind:click="showPicker" />
       <van-field model:value="{{ input }}" label="{{currentDealProject.name}}({{currentDealProject.unit}})" placeholder="单位:({{currentDealProject.unit}})" />
       <view class="buttons">
-    <van-button type="info" round bind:click="calculate">计算</van-button>
+    <van-button type="info" round bind:click="calculate" >计算排碳</van-button>
     <van-button type="danger" round bind:click="clear">全部清空</van-button>
     </view>
     </van-cell-group>

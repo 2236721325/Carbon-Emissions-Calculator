@@ -227,6 +227,7 @@ Page({
     }
     else if(inputNumber==0)
     {
+
     }
     else{
       var result=parseFloat((inputNumber*this.data.currentDealProject.EmissionRate).toFixed(6));
@@ -243,9 +244,10 @@ Page({
         console.log(this.data.records)
     }
     else{
+      var temp=this.data.records[j].result;
       this.data.records[j].input=parseFloat(( inputNumber).toFixed(6));
       this.data.records[j].result=parseFloat((result).toFixed(6));
-      result=0;
+      result=result-temp;
     }
     this.setData({
       currentResult:result,
